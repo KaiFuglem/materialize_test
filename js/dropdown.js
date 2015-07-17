@@ -14,7 +14,8 @@
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
-      belowOrigin: false
+      belowOrigin: false,
+      direction: 'down'
     };
 
     this.each(function(){
@@ -37,6 +38,8 @@
         options.gutter = origin.data('gutter');
       if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
+      if (origin.data('direction') !== undefined)
+        options.direction = origin.data('direction');
     }
 
     updateOptions();
@@ -76,11 +79,19 @@
       }
 
       // Position dropdown
-      activates.css({
-        position: 'absolute',
-        top: origin.position().top + offset,
-        left: origin.position().left + width_difference + gutter_spacing
-      });
+      if (options.direction === 'up') {
+        activates.css({
+          position: 'absolute',
+          bottom: origin.position().top + offset,
+          left: origin.position().left + width_difference + gutter_spacing
+        });
+      } else {
+        activates.css({
+          position: 'absolute',
+          top: origin.position().top + offset,
+          left: origin.position().left + width_difference + gutter_spacing
+        });
+      }
 
 
 
