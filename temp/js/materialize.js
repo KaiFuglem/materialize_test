@@ -2934,7 +2934,7 @@ $(document).ready(function(){
           valuesSelected = [],
           optionsHover = false;
 
-      var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
+      var label = $select.find('option:selected').text() || $select.find('option:first').text() || "";
 
       // Function that renders and appends the option taking into
       // account type and possible image icon.
